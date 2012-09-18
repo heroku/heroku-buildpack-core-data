@@ -1,10 +1,8 @@
-#!/bin/sh
+#!/usr/bin/env bash
+# bin/detect <build-dir>
 
-# This buildpack is valid if some core data model file exists in the root
-if ls $1/*.xcdatamodel &> /dev/null; then
-  echo "Core Data"
-  exit 0
+if [[ $(ls $1/*.xcdatamodel 2> /dev/null | wc -l) -gt 0 ]]; then
+  echo "Core Data" && exit 0
 else
-  echo "No Core Data model detected"
-  exit 1
+  echo "No Core Data model detected" && exit 1
 fi
