@@ -21,7 +21,7 @@ EOF
 
 /usr/local/bin/gem install bundler rack-core-data sequel pg thin --no-rdoc --no-ri | indent
 
-cat << EOF > ~/config.ru
+cat << EOF > $1/config.ru
 require 'rack/core-data'
 Sequel.connect(ENV['DATABASE_URL'])
 run Rack::CoreData(Dir['*.xcdatamodeld'].first)
