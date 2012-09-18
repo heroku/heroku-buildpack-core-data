@@ -1,7 +1,5 @@
 #!/bin/sh
 
-exit 0
-
 # This buildpack is valid if some core data model file exists in the root
 if ls $1/*.xcdatamodel &> /dev/null; then
   echo "Core Data"
