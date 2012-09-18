@@ -1,0 +1,10 @@
+#!/bin/sh
+
+cat << EOF
+---
+addons:
+  - heroku-postgresql:dev
+config_vars:
+default_process_types:
+  web: env GEM_HOME=./.gems ./.gems/bin/thin start -P \$PORT
+EOF

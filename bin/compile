@@ -1,0 +1,38 @@
+#!/bin/sh
+
+indent() {
+  sed -u 's/^/       /'
+}
+
+echo "-----> Compiling Core Data model"
+
+echo "-----> Setting Locale"
+
+export LC_CTYPE=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+# Install dependencies into hidden directory in app root
+
+cat << EOF > ~/.gemrc
+gemhome: $1/.gems
+gempath:
+- $1/.gems
+EOF
+
+/usr/local/bin/gem install bundler rack-core-data sequel pg thin --no-rdoc --no-ri | indent
+
+cat << EOF > ~/config.ru
+require 'rack/core-data'
+Sequel.connect(ENV['DATABASE_URL'])
+run Rack::CoreData(Dir['*.xcdatamodeld'].first)
+EOF
+
+
+# Run Thin
+echo "Running rack-core-data" | indent
+
+export RACK_ENV="production"
+export GEM_HOME=$1/.gems
+export PATH=$1/.gems/bin:$PATH
+cd $1
+$1/.gems/bin/thin start | indent
