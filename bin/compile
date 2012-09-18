@@ -26,13 +26,3 @@ require 'rack/core-data'
 Sequel.connect(ENV['DATABASE_URL'])
 run Rack::CoreData(Dir['*.xcdatamodeld'].first || Dir['*.xcdatamodel'].first)
 EOF
-
-
-# Run Thin
-echo "Running rack-core-data" | indent
-
-export RACK_ENV="production"
-export GEM_HOME=$1/.gems
-export PATH=$1/.gems/bin:$PATH
-cd $1
-$1/.gems/bin/thin start | indent

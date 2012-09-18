@@ -5,7 +5,8 @@ cat << EOF
 addons:
   - heroku-postgresql:dev
 config_vars:
-  GEM_HOME:./.gems
+  GEM_HOME: ./.gems
+  RACK_ENV: production
 default_process_types:
   web: ./.gems/bin/thin start -R ./config.ru -P \$PORT
 EOF
