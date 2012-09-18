@@ -8,5 +8,5 @@ config_vars:
   GEM_HOME: ./.gems
   RACK_ENV: production
 default_process_types:
-  web: ./.gems/bin/thin start -R ./config.ru -P \$PORT
+  web: ./.gems/bin/thin start -R ./config.ru -p \$PORT
 EOF
