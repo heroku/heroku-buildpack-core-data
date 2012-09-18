@@ -10,7 +10,7 @@ Usage
 -----
 
     $ ls
-    Example.xcdatamodeld
+    Example.xcdatamodel
 
     $ heroku create --stack cedar --buildpack http://github.com/mattt/heroku-buildpack-core-data.git
 
