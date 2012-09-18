@@ -24,7 +24,7 @@ EOF
 cat << EOF > $1/config.ru
 require 'rack/core-data'
 Sequel.connect(ENV['DATABASE_URL'])
-run Rack::CoreData(Dir['*.xcdatamodeld'].first)
+run Rack::CoreData(Dir['*.xcdatamodeld'].first || Dir['*.xcdatamodel'].first)
 EOF
 
 
