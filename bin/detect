@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # bin/detect <build-dir>
 
-if [[ $(ls $1/*.xcdatamodel 2> /dev/null | wc -l) -gt 0 ]]; then
+if [[ $(ls $1/*.xcdatamodel* 2> /dev/null | wc -l) -gt 0 ]]; then
   echo "Core Data" && exit 0
 else
   echo "No Core Data model detected" && exit 1
