@@ -40,6 +40,23 @@ This buildpack will detect your app if it includes a Core Data model (`.xcdatamo
   </tr></tbody>
 </table>
 
+Limitations
+-----------
+
+The Core Data Buildpack is designed to encourage rapid prototyping, but should not be used on its own in production applications.
+
+Rather, you are encouraged to create an application using [`Rack::CoreData`](https://github.com/mattt/rack-core-data) directly, which allows you to extend the Core Data scaffolding with [Rack](http://rack.github.com) applications, such as [Rails](http://rubyonrails.org) or [Sinatra](http://www.sinatrarb.com), and middleware. Here's an example `config.ru` file: 
+
+### config.ru
+
+```objective-c
+require 'bundler'
+Bundler.require
+
+DB = Sequel.connect(ENV['DATABASE_URL'])
+
+run Rack::CoreData('./Example.xcdatamodeld')
+
 ---
 
 ## Contact
