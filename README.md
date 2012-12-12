@@ -1,9 +1,6 @@
 Core Data Buildpack
 ===================
 
-> This is still in early stages of development, so proceed with caution when using this in a production application.
-Any bug reports, feature requests, or general feedback at this point would be greatly appreciated.
-
 This is a [Heroku buildpack](http://devcenter.heroku.com/articles/buildpacks) for generating a REST web service from a Core Data model. It uses [rack-core-data](https://github.com/mattt/rack-core-data). 
 
 Usage
